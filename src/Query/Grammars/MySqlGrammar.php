@@ -17,6 +17,15 @@ class MySqlGrammar extends IlluminateMySqlGrammar
      */
     protected function compileFrom(Builder $query, $table)
     {
+        // Laravel10 有可能傳過來的 table 不是 string
+        // 例如當呼叫 DB::raw 的時候，過來的會是 Illuminate\Database\Query\Expression，
+        // 因此加上這段判斷防止錯誤。
+        //
+        // @jocoonopa 2024-01-05
+        if (! is_string($table)) {
+            return parent::compileFrom($query, $table);
+        }
+
         // Check for cross database query to attach database name
         if (strpos($table, '<-->') !== false) {
             list($prefix, $table, $database) = explode('<-->', $table);
