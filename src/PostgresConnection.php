@@ -14,6 +14,8 @@ class PostgresConnection extends IlluminatePostgresConnection implements CanCros
      */
     protected function getDefaultQueryGrammar()
     {
-        return $this->withTablePrefix(new PostgresQueryGrammar());
+        $this->setTablePrefix($this->getTablePrefix());
+
+        return new PostgresQueryGrammar($this);
     }
 }
