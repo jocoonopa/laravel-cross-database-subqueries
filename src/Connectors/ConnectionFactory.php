@@ -4,6 +4,7 @@ namespace Hoyvoy\CrossDatabase\Connectors;
 
 use Hoyvoy\CrossDatabase\MySqlConnection;
 use Hoyvoy\CrossDatabase\PostgresConnection;
+use Hoyvoy\CrossDatabase\SQLiteConnection;
 use Hoyvoy\CrossDatabase\SqlServerConnection;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Connectors\ConnectionFactory as IlluminateConnectionFactory;

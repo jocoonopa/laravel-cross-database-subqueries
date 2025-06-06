@@ -22,8 +22,8 @@ class SqlServerGrammar extends IlluminateSqlServerGrammar
         // Check for cross database query to attach database name
         if (strpos($table, '<-->') !== false) {
             list($prefix, $table, $database) = explode('<-->', $table);
-            $wrappedTable = $this->wrapTable($table, true);
-            $wrappedTablePrefixed = $this->wrap($prefix.$table, true);
+            $wrappedTable = $this->wrapTable($table);
+            $wrappedTablePrefixed = $this->wrap($prefix.$table);
             $from = 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed;
             if ($wrappedTable != $wrappedTablePrefixed) {
                 $from = 'from '.$this->wrap($database).'.'.$wrappedTablePrefixed.' as '.$wrappedTable;
